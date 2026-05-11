@@ -4,10 +4,10 @@ import jwt from "jsonwebtoken"
 
 const handleSignUP = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { userName, email, password } = req.body;
 
     if (
-      name.trim().length === 0 ||
+      userName.trim().length === 0 ||
       email.trim().length === 0 ||
       password.trim().length === 0
     ) {
@@ -23,7 +23,7 @@ const handleSignUP = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10)
 
     await userModel.create({
-        name: name,
+        name: userName,
         email: email,
         password: hashedPassword
     })
