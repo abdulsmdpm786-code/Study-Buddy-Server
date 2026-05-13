@@ -1,5 +1,5 @@
-import express from "express"
 import dotenv from "dotenv"
+import express from "express"
 import connectDB from "./Config/dbConfig.js"
 import apiRouter from "./Routers/index.js"
 import cookieParser from "cookie-parser"
@@ -7,16 +7,19 @@ import cors from "cors"
 
 
 const app = express()
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true
+    })
+)
+
+
 dotenv.config()
 connectDB()
 app.use(express.json())
 app.use(cookieParser())
 
-app.use(
-    cors({
-        origin: "http://localhost:5173"
-    })
-)
 
 
 app.use("/api", apiRouter)
