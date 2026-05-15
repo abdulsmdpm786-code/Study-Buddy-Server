@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const courseModel = mongoose.Schema({
+const courseSchema = mongoose.Schema({
 
     title:{
         type: String,
@@ -26,5 +26,5 @@ const courseModel = mongoose.Schema({
 
 },{timestamps: true})
 
-export const courseModel = mongoose.model("Courses", courseModel)
+export const courseModel = mongoose.model("Courses", courseSchema)
 
