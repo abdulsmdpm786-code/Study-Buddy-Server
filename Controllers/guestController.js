@@ -38,6 +38,8 @@ const handleSignUP = async (req, res) => {
 
 const handleSignIn = async (req, res) => {
   try {
+    console.log("in login section");
+    
     const { email, password } = req.body;
 
     if (email.trim().length === 0 || password.trim().length === 0) {
@@ -75,6 +77,7 @@ const handleSignIn = async (req, res) => {
   }
 };
 
+
 const handleLogout = async (req, res) => {
   try {
     res.clearCookie("token", { path: "/" });
@@ -90,7 +93,7 @@ const handleLogout = async (req, res) => {
 
 const handleAuth = async (req, res) => {
   console.log("working auth.....");
-  
+
   const token = req.cookies.token;
   if (!token) {
     return res
@@ -98,13 +101,10 @@ const handleAuth = async (req, res) => {
       .json({ isAuthenticated: false, message: "No token found..." });
   }
   console.log("token...", token);
-  
 
-  
   try {
-    const decoded =  jwt.verify(token, process.env.JWT_SECRET_KEY);
-    console.log("this is decoded.....",decoded);
-    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    console.log("this is decoded.....", decoded);
 
     const user = await userModel.findById(decoded.id).select("-password");
     if (!user) {

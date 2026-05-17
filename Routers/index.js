@@ -7,4 +7,4 @@ const apiRouter = express.Router()
 
 apiRouter.use("/v1", v1Rotes)
 
-export default apiRouter
+export default apiRouter 

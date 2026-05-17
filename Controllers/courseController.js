@@ -6,8 +6,8 @@ const courseAdd = async (req, res) => {
   try {
     console.log("in add section.....");
 
-    const { title, description, price, duration } = req.body;
-    if (!title || !description || !price || !duration) {
+    const { shortTitle, title, description, price, duration } = req.body;
+    if (!shortTitle || !title || !description || !price || !duration) {
       return res.status(400).json({ errMsg: "All fields are required" });
     }
     if (!req.file) {
@@ -15,9 +15,11 @@ const courseAdd = async (req, res) => {
     }
     console.log(req.file, "image uploaded by multer");
 
+    
     const imageUrl = await uploadCloudinary(req.file.path);
 
     const newCourse = await courseModel.create({
+      shortTitle: req.body.shortTitle,
       title: req.body.title,
       description: req.body.description,
       duration: req.body.duration,
@@ -34,6 +36,8 @@ const courseAdd = async (req, res) => {
 
 const listCourse = async (req, res) => {
   try {
+    console.log("in list course section...");
+    
     const courseList = await courseModel.find();
 
     res.status(200).json({ Courses: courseList });
