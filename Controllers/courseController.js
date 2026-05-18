@@ -5,9 +5,11 @@ import fs from "fs"
 const courseAdd = async (req, res) => {
   try {
     console.log("in add section.....");
+    console.log("body", req.body)    // ← should show all fields
+  console.log("file", req.file) 
 
-    const { shortTitle, title, description, price, duration } = req.body;
-    if (!shortTitle || !title || !description || !price || !duration) {
+    const { shortTitle, title,  price, duration } = req.body;
+    if (!shortTitle || !title ||  !price || !duration) {
       return res.status(400).json({ errMsg: "All fields are required" });
     }
     if (!req.file) {
@@ -21,7 +23,6 @@ const courseAdd = async (req, res) => {
     const newCourse = await courseModel.create({
       shortTitle: req.body.shortTitle,
       title: req.body.title,
-      description: req.body.description,
       duration: req.body.duration,
       price: req.body.price,
       Image: imageUrl,
@@ -80,6 +81,8 @@ const courseName = async (req, res) => {
 
 const updateOne = async (req, res) => {
   try {
+    console.log("in update one section...");
+    
     const { id } = req.params;
     const updateData = { ...req.body };
 
