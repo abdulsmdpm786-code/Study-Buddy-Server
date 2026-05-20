@@ -11,6 +11,10 @@ const courseSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     price: {
       type: String,
       required: true,
@@ -28,4 +32,3 @@ const courseSchema = mongoose.Schema(
 );
 
 export const courseModel = mongoose.model("Courses", courseSchema);
-
