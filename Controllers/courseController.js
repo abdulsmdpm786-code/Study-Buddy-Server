@@ -39,8 +39,24 @@ const courseAdd = async (req, res) => {
 const listCourse = async (req, res) => {
   try {
     console.log("in list course section...");
+
+
+    const {search, category} = req.query
+    // console.log("search backend..", category);
+
+
+    let query = {}
+
+    if(search){
+      query.title = {$regex: search, $options: 'i'}
+    }
+
+    if(category && category !== "All"){
+      query.shortTitle = category
+    }
     
-    const courseList = await courseModel.find();
+    const courseList = await courseModel.find(query);
+console.log("course...", courseList);
 
     res.status(200).json({ Courses: courseList });
   } catch (error) {
