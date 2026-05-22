@@ -6,14 +6,15 @@ const quizAdd = async (req, res) => {
     console.log("req.body", req.body);
     console.log("params", req.params);
 
-    const { title, questions } = req.body;
+    const { title, description ,questions } = req.body;
     const { courseId } = req.params;
 
-    if (!title || !questions) {
+    if (!title || !questions || !description) {
       return res.status(400).json({ errMsg: "All fields are required" });
     }
 
-    const quizQuestion = await quizModel.create({ courseId, title, questions });
+    
+    const quizQuestion = await quizModel.create({ courseId, title, description , questions });
     console.log("questions....", quizQuestion);
 
     return res.status(200).json({ message: "Added", quizQuestion });
@@ -57,4 +58,19 @@ console.log("delete..", deleteQuiz);
   }
 };
 
-export { quizAdd, quizFind, quizDelete };
+const getAll = async (req, res) =>{
+  try {
+    const fetchAll = await quizModel.find()
+    if(!fetchAll){
+      return res.status(404).json({errMsg: "Something went wrong"})
+    }
+
+    return res.status(200).json({message: "got it", fetchAll})
+  } catch (error) {
+    return res
+      .status(error.status || 500)
+      .json({ errMsg: "internal error", error });
+  }
+}
+
+export { quizAdd, quizFind, quizDelete, getAll };

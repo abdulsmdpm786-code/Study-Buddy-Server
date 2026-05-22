@@ -33,6 +33,10 @@ const quizSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     questions: {
       type: [questionSchema],
       required: true,
