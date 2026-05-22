@@ -5,7 +5,7 @@ import fs from "fs"
 const courseAdd = async (req, res) => {
   try {
     console.log("in add section.....");
-    console.log("body", req.body)    // ← should show all fields
+    console.log("body", req.body)   
   console.log("file", req.file) 
 
     const { shortTitle, title, description ,  price, duration } = req.body;
@@ -56,7 +56,7 @@ const listCourse = async (req, res) => {
     }
     
     const courseList = await courseModel.find(query);
-console.log("course...", courseList);
+// console.log("course...", courseList);
 
     res.status(200).json({ Courses: courseList });
   } catch (error) {
