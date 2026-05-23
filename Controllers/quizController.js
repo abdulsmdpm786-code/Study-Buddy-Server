@@ -25,6 +25,8 @@ const quizAdd = async (req, res) => {
 
 const quizFind = async (req, res) => {
   try {
+    console.log("in find section");
+    
     const { courseId } = req.params;
 
     const courseQuiz = await quizModel.find({ courseId });
@@ -32,7 +34,7 @@ const quizFind = async (req, res) => {
       return res.status(404).json({ errMsg: "Course not found" });
     }
 
-    return res.status(200).json({ message: "Got the quiz", courseQuiz });
+    return res.status(200).json({ message: "Got the quiz",Quiz: courseQuiz });
   } catch (error) {
     return res
       .status(error.status || 500)
@@ -65,7 +67,7 @@ const getAll = async (req, res) =>{
       return res.status(404).json({errMsg: "Something went wrong"})
     }
 
-    return res.status(200).json({message: "got it", fetchAll})
+    return res.status(200).json({message: "got it", Quiz: fetchAll})
   } catch (error) {
     return res
       .status(error.status || 500)
