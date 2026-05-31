@@ -32,7 +32,7 @@ const courseAdd = async (req, res) => {
     return res.status(200).json({ message: "All clear...", newCourse });
   } catch (error) {
     console.log(error);
-    res.status(error.status || 500).json({ errMsg: "internal error", error });
+    return res.status(error.status || 500).json({ errMsg: "internal error", error });
   }
 };
 
