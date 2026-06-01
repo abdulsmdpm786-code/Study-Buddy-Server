@@ -13,7 +13,7 @@ import authUser from "../../Middlewares/verifyUser.js";
 
 const courseRouter = express.Router();
 
-// authAdmin,
+
 courseRouter.post("/create",  upload.single("Image"), courseAdd);
 courseRouter.get("/getList", authUser, listCourse);
 courseRouter.get("/getOne/:courseId", authUser, courseId);
