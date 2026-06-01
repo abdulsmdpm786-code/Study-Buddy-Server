@@ -28,13 +28,4 @@ This is the robust, secure, and scalable server-side API for the **Study Buddy**
 * **🎯 Comprehensive REST API:** Fully structured routes managing student data, including to-do tasks, blog posts, quizzes, and course modules.
 * **🛡️ Secure CORS Infrastructure:** Lock-down access control that only accepts authenticated requests from the designated local and production Vercel frontends.
 
----
 
-## ⚙️ Environment Variables
-
-The server relies on several critical environment configuration variables to toggle safely between local testing and live deployment, as well as to securely manage email services. Create a `.env` file in your backend root directory:
-
-
-# Nodemailer (Email Credentials)
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_app_password
