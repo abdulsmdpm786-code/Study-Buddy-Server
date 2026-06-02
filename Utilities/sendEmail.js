@@ -4,8 +4,8 @@ export const sendEmail = async (option) => {
   console.log("Attempting to send email to:", option.email);
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,       
-      port: 587,                           
+      host: "smtp-relay.brevo.com",       
+      port: 2525,                           
       secure: false,                        
       auth: {
         user: process.env.EMAIL_USER,      
