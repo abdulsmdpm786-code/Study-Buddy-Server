@@ -14,7 +14,7 @@ export const sendEmail = async (option) => {
     });
 
     const mailOptions = {
-      from: `Institute Admin <${process.env.EMAIL_USER}>`,
+      from: "Study Buddy Admin <abdulsmdpm786@gmail.com>",
       to: option.email,
       subject: option.subject,
       text: option.message,
