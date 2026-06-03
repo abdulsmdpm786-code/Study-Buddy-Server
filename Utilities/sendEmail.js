@@ -21,9 +21,9 @@ export const sendEmail = async (option) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log("✅ Email sent! Message ID:", info.messageId);
+    console.log(" Email sent! Message ID:", info.messageId);
   } catch (error) {
-    console.error("❌ Nodemailer Error:", error.message);
+    console.error(" Nodemailer Error:", error.message);
     throw error; 
   }
 };
