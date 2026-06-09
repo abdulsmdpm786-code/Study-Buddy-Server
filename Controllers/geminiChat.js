@@ -7,7 +7,7 @@ const getChat = async (req, res) => {
     const { message, history } = req.body;
 
     const model = genAi.getGenerativeModel({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.1-flash-lite",
       systemInstruction:
         "You are a supportive study buddy. Help the student learn without just spoon-feeding answers.",
     });
