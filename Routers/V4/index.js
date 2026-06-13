@@ -1,11 +1,11 @@
 import express from "express"
 import todoRouter from "./todoNoteRouter.js"
 
-const v4Router = express.Router()
+const v4Routes = express.Router()
 
 
-v4Router.use("/todoNote", todoRouter)
+v4Routes.use("/todoNote", todoRouter)
 
 
 
-export default v4Router
+export default v4Routes

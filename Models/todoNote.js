@@ -10,9 +10,14 @@ const todoNoteSchema = mongoose.Schema(
       type: String,
       require: true,
     },
+    isCompleted:{
+      type: String,
+      require: true,
+      enum: ["toDoList","onGoing", "Completed"]
+    }
   },
   { timestamp: true },
 );
 
+export const noteModel = mongoose.model("Note", todoNoteSchema)
 
-const noteModel = mongoose.model("Note", todoNoteSchema)
