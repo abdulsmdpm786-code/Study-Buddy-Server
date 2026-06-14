@@ -2,12 +2,12 @@ import { noteModel } from "../Models/todoNote.js";
 
 const addTodo = async (req, res) => {
   try {
-    const { title, description, isCompleted } = req.body;
-    if (!title || !description || !isCompleted) {
+    const { title, description, date} = req.body;
+    if (!title || !description ) {
       return res.status(400).json({ errMsg: "All fields are required" });
     }
 
-    const newNote = await noteModel.create({ title, description, isCompleted });
+    const newNote = await noteModel.create({ title, description, date});
 
     return res.status(200).json({ note: newNote, message: "note created" });
   } catch (error) {
