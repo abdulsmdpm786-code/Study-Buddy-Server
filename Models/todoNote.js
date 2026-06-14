@@ -13,7 +13,7 @@ const todoNoteSchema = mongoose.Schema(
     isCompleted:{
       type: String,
       require: true,
-      enum: ["toDoList","onGoing", "Completed"]
+      enum: ["Planned","InProgress", "Done"]
     }
   },
   { timestamp: true },
